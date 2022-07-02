@@ -1,3 +1,12 @@
+<style scoped>
+  .theme {
+    cursor: pointer;
+  }
+
+  .rowTheme:hover {
+    background-color: rgb(246, 246, 246);
+  }
+</style>
 <template>
   <div class="card">
     <div class="card-header pb-0">
@@ -44,7 +53,7 @@
       </div>
     </div>
     <div class="card-body px-0 pb-2">
-      <div class="table-responsive">
+      <div class="table-responsive table-hover">
         <table class="table align-items-center mb-0">
           <thead>
             <tr>
@@ -61,8 +70,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="agenda in agendas" :key="agenda.id">
-              <td>
+            <tr v-for="agenda in agendas" :key="agenda.id" class="rowTheme">
+              <td @click="showTheme(agenda.id)" class="theme">
                 <div class="d-flex px-2 py-1">
                   <div>
                   </div>
@@ -72,7 +81,7 @@
                 </div>
               </td>
               <td class="align-middle text-center text-sm">
-                <span class="text-xs font-weight-bold">{{agenda.created_at}}</span>
+                <span class="text-xs font-weight-bold">{{createdAt(agenda.created_at)}}</span>
               </td>
             </tr>
 
@@ -87,6 +96,7 @@
 import setTooltip from "@/assets/js/tooltip.js";
 import img1 from "../../assets/img/small-logos/logo-xd.svg";
 import axios from '../../axios';
+import moment from 'moment';
 
 export default {
   name: "projects-card",
@@ -98,6 +108,8 @@ export default {
   },
   components: {
   },
+  computed:{
+  },
   created() {
     this.getAgendas();
   },
@@ -106,7 +118,14 @@ export default {
       const response = await axios.get('/api/v1/agendas');
       const { result } = response.data;
       this.agendas = result;
+    },
+    createdAt(date) {
+      return moment(date).format('DD/MM/yyyy')
+    },
+    showTheme(id) {
+      console.log(id)
     }
+
   },
 
   mounted() {
