@@ -40,7 +40,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["isRTL"]),
+    ...mapState("TemplateStore", ["isRTL"]),
   },
 };
 </script>
