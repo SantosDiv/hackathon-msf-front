@@ -101,7 +101,7 @@ export default {
   methods: {
     async setAllStakeholders(){
       const response = await Axios.get('/stakeholder')
-      this.setAllStakeholders = response.data
+      this.stakeholders = response.data
     },
     async deleteStakeholder(id){
       await Axios.delete(`{/stakeholder/${id}`)
