@@ -3,10 +3,10 @@
     <div class="card-header pb-0">
       <div class="row">
         <div class="col-lg-6 col-7">
-          <h6>Notícias</h6>
+          <h6>Temas</h6>
           <p class="text-sm mb-0">
             <!-- <i class="fa fa-check text-info" aria-hidden="true"></i> -->
-            nas últimas<span class="font-weight-bold ms-1">48 horas</span>
+            <span>Todos os temas cadastrados</span>
           </p>
         </div>
         <div class="col-lg-6 col-5 my-auto text-end">
@@ -51,22 +51,12 @@
               <th
                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                Título da notícia
-              </th>
-              <th
-                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
-              >
-                Fonte
+                Título
               </th>
               <th
                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
               >
-                Data
-              </th>
-              <th
-                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-              >
-                Credibilidade
+                Data de criação
               </th>
             </tr>
           </thead>
@@ -75,127 +65,17 @@
               <td>
                 <div class="d-flex px-2 py-1">
                   <div>
-                    <soft-avatar :img="img1" size="sm" class="me-3" alt="xd" />
                   </div>
                   <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Governo aprova lei de controle de imigrantes</h6>
+                    <h6 class="mb-0 text-sm">Migração e refúgio</h6>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div class="mt-2">
-                  <p class="text-xs font-weight-bold">G1</p>
                 </div>
               </td>
               <td class="align-middle text-center text-sm">
                 <span class="text-xs font-weight-bold">10/07/2022</span>
               </td>
-              <td class="align-middle">
-                <div class="d-flex align-items-center justify-content-center">
-                  <span class="text-xs font-weight-bold mx-2">Alta</span>
-                </div>
-              </td>
             </tr>
-                        <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <soft-avatar :img="img1" size="sm" class="me-3" alt="xd" />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Governo aprova lei de controle de imigrantes</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="mt-2">
-                  <p class="text-xs font-weight-bold">G1</p>
-                </div>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="text-xs font-weight-bold">10/07/2022</span>
-              </td>
-              <td class="align-middle">
-                <div class="d-flex align-items-center justify-content-center">
-                  <span class="text-xs font-weight-bold mx-2">Alta</span>
-                </div>
-              </td>
-            </tr>
-                        <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <soft-avatar :img="img1" size="sm" class="me-3" alt="xd" />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Governo aprova lei de controle de imigrantes</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="mt-2">
-                  <p class="text-xs font-weight-bold">G1</p>
-                </div>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="text-xs font-weight-bold">10/07/2022</span>
-              </td>
-              <td class="align-middle">
-                <div class="d-flex align-items-center justify-content-center">
-                  <span class="text-xs font-weight-bold mx-2">Alta</span>
-                </div>
-              </td>
-            </tr>
-                        <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <soft-avatar :img="img1" size="sm" class="me-3" alt="xd" />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Governo aprova lei de controle de imigrantes</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="mt-2">
-                  <p class="text-xs font-weight-bold">G1</p>
-                </div>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="text-xs font-weight-bold">10/07/2022</span>
-              </td>
-              <td class="align-middle">
-                <div class="d-flex align-items-center justify-content-center">
-                  <span class="text-xs font-weight-bold mx-2">Alta</span>
-                </div>
-              </td>
-            </tr>
-                        <tr>
-              <td>
-                <div class="d-flex px-2 py-1">
-                  <div>
-                    <soft-avatar :img="img1" size="sm" class="me-3" alt="xd" />
-                  </div>
-                  <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Governo aprova lei de controle de imigrantes</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="mt-2">
-                  <p class="text-xs font-weight-bold">G1</p>
-                </div>
-              </td>
-              <td class="align-middle text-center text-sm">
-                <span class="text-xs font-weight-bold">10/07/2022</span>
-              </td>
-              <td class="align-middle">
-                <div class="d-flex align-items-center justify-content-center">
-                  <span class="text-xs font-weight-bold mx-2">Alta</span>
-                </div>
-              </td>
-            </tr>
+
           </tbody>
         </table>
       </div>
@@ -205,58 +85,16 @@
 
 <script>
 import setTooltip from "@/assets/js/tooltip.js";
-import SoftAvatar from "@/components/SoftAvatar.vue";
 import img1 from "../../assets/img/small-logos/logo-xd.svg";
-import img2 from "../../assets/img/team-1.jpg";
-import img3 from "@/assets/img/team-2.jpg";
-import img4 from "../../assets/img/team-3.jpg";
-import img5 from "../../assets/img/team-4.jpg";
-import img6 from "../../assets/img/small-logos/logo-atlassian.svg";
-import img7 from "../../assets/img/team-2.jpg";
-import img8 from "../../assets/img/team-4.jpg";
-import img9 from "../../assets/img/small-logos/logo-slack.svg";
-import img10 from "../../assets/img/team-3.jpg";
-import img11 from "../../assets/img/team-1.jpg";
-import img12 from "../../assets/img/small-logos/logo-spotify.svg";
-import img13 from "../../assets/img/team-4.jpg";
-import img14 from "../../assets/img/team-3.jpg";
-import img15 from "../../assets/img/team-4.jpg";
-import img16 from "../../assets/img/team-1.jpg";
-import img17 from "../../assets/img/small-logos/logo-jira.svg";
-import img18 from "../../assets/img/team-4.jpg";
-import img19 from "../../assets/img/small-logos/logo-invision.svg";
-import img20 from "../../assets/img/team-1.jpg";
-import img21 from "../../assets/img/team-4.jpg";
 
 export default {
   name: "projects-card",
   data() {
     return {
       img1,
-      img2,
-      img3,
-      img4,
-      img5,
-      img6,
-      img7,
-      img8,
-      img9,
-      img10,
-      img11,
-      img12,
-      img13,
-      img14,
-      img15,
-      img16,
-      img17,
-      img18,
-      img19,
-      img20,
-      img21,
     };
   },
   components: {
-    SoftAvatar,
   },
   mounted() {
     setTooltip();
