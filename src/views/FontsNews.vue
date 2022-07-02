@@ -33,8 +33,8 @@
       <div class="col-md-8">
         <div class="card mb-4">
           <div class="card-header pb-0 d-flex justify-content-between">
-            <h6>Temas</h6>
-            <button class="btn sucesss">Criar novo tema</button>
+            <h6>Fontes</h6>
+            <button class="btn sucesss">Criar nova fonte</button>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive table-hover p-0">
@@ -84,18 +84,18 @@
 <script>
 import axios from '../axios';
 export default {
-  name: "agenda",
+  name: "fonts",
   data() {
     return {
       iconBackground: "bg-gradient-success",
-      agendas: [],
+      fonts: [],
     };
   },
   components: {
   },
   methods: {
-    async getAgendas() {
-      const response = await axios.get('/api/v1/agendas');
+    async getfonts() {
+      const response = await axios.get('/api/v1/fonts');
       console.log(response.data);
     }
     // edit(id) {

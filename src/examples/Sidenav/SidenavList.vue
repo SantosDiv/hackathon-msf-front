@@ -20,7 +20,7 @@
       </li>
 
       <li class="nav-item">
-        <sidenav-collapse navText="Temas" :to="{ name: 'Agenda' }">
+        <sidenav-collapse navText="Fontes" :to="{ name: 'FontsNews' }">
           <template #icon>
             <office />
           </template>
