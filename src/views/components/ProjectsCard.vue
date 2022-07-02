@@ -96,6 +96,7 @@
 import setTooltip from "@/assets/js/tooltip.js";
 import img1 from "../../assets/img/small-logos/logo-xd.svg";
 import axios from '../../axios';
+import { mapState, mapActions } from 'vuex';
 import moment from 'moment';
 
 export default {
@@ -103,21 +104,23 @@ export default {
   data() {
     return {
       img1,
-      agendas: [],
+      // agendas: [],
     };
   },
   components: {
   },
   computed:{
+    ...mapState('AgendaStore', ['agendas'])
   },
   created() {
     this.getAgendas();
   },
   methods: {
+    ...mapActions('AgendaStore', ['setAgendas']),
     async getAgendas() {
       const response = await axios.get('/api/v1/agendas');
       const { result } = response.data;
-      this.agendas = result;
+      this.setAgendas(result);
     },
     createdAt(date) {
       return moment(date).format('DD/MM/yyyy')
