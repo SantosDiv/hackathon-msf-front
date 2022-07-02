@@ -181,31 +181,41 @@ export default {
     };
   },
   computed: {
-    ...mapState(["isTransparent", "isNavFixed", "navbarFixed", "mcolor"]),
+    ...mapState("TemplateStore", [
+      "isTransparent",
+      "isNavFixed",
+      "navbarFixed",
+      "mcolor",
+      "showNavbar",
+      "bootstrap",
+      "showSidenav",
+      "showFooter",
+      "isPinned",
+    ]),
   },
   mounted() {
-    setTooltip(this.$store.state.bootstrap);
+    setTooltip(this.bootstrap);
   },
   beforeMount() {
-    this.$store.state.showNavbar = false;
-    this.$store.state.showSidenav = false;
-    this.$store.state.showFooter = false;
+    this.showNavbar = false;
+    this.showSidenav = false;
+    this.showFooter = false;
     body.classList.add("virtual-reality");
-    this.$store.state.isTransparent = "bg-white";
+    this.isTransparent = "bg-white";
   },
   beforeUnmount() {
-    this.$store.state.showNavbar = true;
-    this.$store.state.showSidenav = true;
-    this.$store.state.showFooter = true;
+    this.showNavbar = true;
+    this.showSidenav = true;
+    this.showFooter = true;
     body.classList.remove("virtual-reality");
 
-    if (this.$store.state.isPinned === false) {
+    if (this.isPinned === false) {
       const sidenav_show = document.querySelector(".g-sidenav-show");
       sidenav_show.classList.remove("g-sidenav-hidden");
       sidenav_show.classList.add("g-sidenav-pinned");
-      this.$store.state.isPinned = true;
+      this.isPinned = true;
     }
-    this.$store.state.isTransparent = "bg-transparent";
+    this.isTransparent = "bg-transparent";
   },
   methods: {
     ...mapMutations(["navbarMinimize", "toggleConfigurator"]),

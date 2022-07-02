@@ -1,30 +1,30 @@
 <template>
   <sidenav
-    :custom_class="this.$store.state.mcolor"
+    :custom_class="mcolor"
     :class="[
-      this.$store.state.isTransparent,
-      this.$store.state.isRTL ? 'fixed-end' : 'fixed-start',
+      isTransparent,
+      isRTL ? 'fixed-end' : 'fixed-start',
     ]"
-    v-if="this.$store.state.showSidenav"
+    v-if="showSidenav"
   />
   <main
     class="main-content position-relative max-height-vh-100 h-100 border-radius-lg"
-    :style="this.$store.state.isRTL ? 'overflow-x: hidden' : ''"
+    :style="isRTL ? 'overflow-x: hidden' : ''"
   >
     <!-- nav -->
     <navbar
       :class="[navClasses]"
-      :textWhite="this.$store.state.isAbsolute ? 'text-white opacity-8' : ''"
+      :textWhite="isAbsolute ? 'text-white opacity-8' : ''"
       :minNav="navbarMinimize"
-      v-if="this.$store.state.showNavbar"
+      v-if="showNavbar"
     />
     <router-view />
-    <app-footer v-show="this.$store.state.showFooter" />
+    <app-footer v-show="showFooter" />
     <configurator
       :toggle="toggleConfigurator"
       :class="[
-        this.$store.state.showConfig ? 'show' : '',
-        this.$store.state.hideConfigButton ? 'd-none' : '',
+        showConfig ? 'show' : '',
+        hideConfigButton ? 'd-none' : '',
       ]"
     />
   </main>
@@ -34,7 +34,7 @@ import Sidenav from "./examples/Sidenav";
 import Configurator from "@/examples/Configurator.vue";
 import Navbar from "@/examples/Navbars/Navbar.vue";
 import AppFooter from "@/examples/Footer.vue";
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 export default {
   name: "App",
   components: {
@@ -44,21 +44,20 @@ export default {
     AppFooter,
   },
   methods: {
-    ...mapMutations(["toggleConfigurator", "navbarMinimize"]),
+    ...mapMutations("TemplateStore", ["toggleConfigurator", "navbarMinimize"]),
   },
   computed: {
+    ...mapState('TemplateStore', ["mcolor", "isTransparent", "isRTL", "showSidenav", "showNavbar", "showFooter", "showConfig", "hideConfigButton", "isAbsolute"]),
     navClasses() {
       return {
-        "position-sticky blur shadow-blur mt-4 left-auto top-1 z-index-sticky": this
-          .$store.state.isNavFixed,
-        "position-absolute px-4 mx-0 w-100 z-index-2": this.$store.state
-          .isAbsolute,
-        "px-0 mx-4 mt-4": !this.$store.state.isAbsolute,
+        "position-sticky blur shadow-blur mt-4 left-auto top-1 z-index-sticky": this.isNavFixed,
+        "position-absolute px-4 mx-0 w-100 z-index-2": this.isAbsolute,
+        "px-0 mx-4 mt-4": !this.isAbsolute,
       };
     },
   },
   beforeMount() {
-    this.$store.state.isTransparent = "bg-transparent";
+    this.isTransparent = "bg-transparent";
   },
 };
 </script>
