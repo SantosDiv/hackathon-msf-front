@@ -5,11 +5,6 @@
         <authors-table />
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <projects-table />
-      </div>
-    </div>
   </div>
 </template>
 
