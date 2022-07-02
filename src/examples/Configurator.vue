@@ -9,8 +9,8 @@
     <div class="shadow-lg card blur">
       <div class="pt-3 pb-0 bg-transparent card-header">
         <div class="float-start">
-          <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
-          <p>See our dashboard options.</p>
+          <h5 class="mt-3 mb-0">Configurações</h5>
+          <p>Veja as opções do seu dashboard</p>
         </div>
         <div class="mt-4 float-end" @click="toggle">
           <button class="p-0 btn btn-link text-dark fixed-plugin-close-button">
@@ -23,7 +23,7 @@
       <div class="pt-0 card-body pt-sm-3">
         <!-- Sidebar Backgrounds -->
         <div>
-          <h6 class="mb-0">Sidebar Colors</h6>
+          <h6 class="mb-0">Cores do sidebar</h6>
         </div>
         <a href="#" class="switch-trigger background-color">
           <div
@@ -62,89 +62,6 @@
             ></span>
           </div>
         </a>
-        <!-- Sidenav Type -->
-        <div class="mt-3">
-          <h6 class="mb-0">Sidenav Type</h6>
-          <p class="text-sm">Choose between 2 different sidenav types.</p>
-        </div>
-        <div class="d-flex">
-          <button
-            id="btn-transparent"
-            class="px-3 mb-2 btn bg-gradient-success w-100"
-            :class="ifTransparent === 'bg-transparent' ? 'active' : ''"
-            @click="sidebarType('bg-transparent')"
-          >
-            Transparent
-          </button>
-          <button
-            id="btn-white"
-            class="px-3 mb-2 btn bg-gradient-success w-100 ms-2"
-            :class="ifTransparent === 'bg-white' ? 'active' : ''"
-            @click="sidebarType('bg-white')"
-          >
-            White
-          </button>
-        </div>
-        <p class="mt-2 text-sm d-xl-none d-block">
-          You can change the sidenav type just on desktop view.
-        </p>
-        <!-- Navbar Fixed -->
-        <div class="mt-3">
-          <h6 class="mb-0">Navbar Fixed</h6>
-        </div>
-        <div class="form-check form-switch ps-0">
-          <input
-            class="mt-1 form-check-input"
-            :class="this.$store.state.isRTL ? 'float-end  me-auto' : ' ms-auto'"
-            type="checkbox"
-            id="navbarFixed"
-            :checked="this.$store.state.isNavFixed"
-            @change="setNavbarFixed"
-            v-model="fixedKey"
-          />
-        </div>
-        <hr class="horizontal dark my-sm-4" />
-        <a
-          class="btn bg-gradient-info w-100"
-          href="https://www.creative-tim.com/product/vue-soft-ui-dashboard-pro"
-          >Buy now</a
-        >
-        <a
-          class="btn bg-gradient-dark w-100"
-          href="https://www.creative-tim.com/product/vue-soft-ui-dashboard"
-          >Free demo</a
-        >
-        <a
-          class="btn btn-outline-dark w-100"
-          href="https://www.creative-tim.com/learning-lab/vue/overview/soft-ui-dashboard/"
-          >View documentation</a
-        >
-        <div class="text-center w-100">
-          <a
-            class="github-button"
-            href="https://github.com/creativetimofficial/vue-soft-ui-dashboard"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star creativetimofficial/soft-ui-dashboard on GitHub"
-            >Star</a
-          >
-          <h6 class="mt-3">Thank you for sharing!</h6>
-          <a
-            href="https://twitter.com/intent/tweet?text=Check%20Vue%20Soft%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fvue-soft-ui-dashboard"
-            class="mb-0 btn btn-dark me-2"
-            target="_blank"
-          >
-            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
-          </a>
-          <a
-            href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/vue-soft-ui-dashboard"
-            class="mb-0 btn btn-dark me-2"
-            target="_blank"
-          >
-            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
-          </a>
-        </div>
       </div>
     </div>
   </div>
