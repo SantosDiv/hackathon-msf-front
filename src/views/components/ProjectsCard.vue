@@ -61,18 +61,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr v-for="agenda in agendas" :key="agenda.id">
               <td>
                 <div class="d-flex px-2 py-1">
                   <div>
                   </div>
                   <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">Migração e refúgio</h6>
+                    <h6 class="mb-0 text-sm">{{agenda.title}}</h6>
                   </div>
                 </div>
               </td>
               <td class="align-middle text-center text-sm">
-                <span class="text-xs font-weight-bold">10/07/2022</span>
+                <span class="text-xs font-weight-bold">{{agenda.created_at}}</span>
               </td>
             </tr>
 
@@ -86,16 +86,29 @@
 <script>
 import setTooltip from "@/assets/js/tooltip.js";
 import img1 from "../../assets/img/small-logos/logo-xd.svg";
+import axios from '../../axios';
 
 export default {
   name: "projects-card",
   data() {
     return {
       img1,
+      agendas: [],
     };
   },
   components: {
   },
+  created() {
+    this.getAgendas();
+  },
+  methods: {
+    async getAgendas() {
+      const response = await axios.get('/api/v1/agendas');
+      const { result } = response.data;
+      this.agendas = result;
+    }
+  },
+
   mounted() {
     setTooltip();
   },
