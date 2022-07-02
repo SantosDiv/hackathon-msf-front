@@ -6,7 +6,7 @@ const AuthorsStore = {
 
   mutations:{
     setAuthorsList(state, payload){
-      state.printersList = payload.result
+      state.AuthorsList = payload.result
     },
     deleteAuthor(state, deletingAuthorsId){
       state.AuthorsList = state.AuthorsList.filter((author) => author.id != deletingAuthorsId)
@@ -18,9 +18,9 @@ const AuthorsStore = {
       setAllStakeholders()
         .then( authorsList => commit('setAuthorsList', authorsList))
     },
-    deletePrinter({commit}, deletingAuthorsId){
-      return deleteStakeholder(deletingAuthorsId)
-        .then( () => commit('deletePrinter', deletingAuthorsId))
+    deleteStakeholder({commit}, deletingAuthorsId){
+      return this.deleteStakeholder(deletingAuthorsId)
+        .then( () => commit('deleteStakeholder', deletingAuthorsId))
     },
   },
 
