@@ -43,7 +43,7 @@ const routes = [
   },
   {
     path: "/fonts",
-    name: "FontsNews",
+    name: "Fontes de notícias",
     component: FontsNews,
   },
   {
