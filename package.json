@@ -32,7 +32,9 @@
     "moment": "^2.29.3",
     "vue": "3.2.0",
     "vue-flatpickr-component": "9.0.5",
+    "vue-multiselect": "^2.1.6",
     "vue-router": "^4.0.0-0",
+    "vue-select": "^3.18.3",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
