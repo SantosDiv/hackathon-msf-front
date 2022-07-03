@@ -34,7 +34,7 @@
 <template>
   <div class="container-fluid py-4">
     <div class="row my-4">
-      <div class="col-md-8">
+      <div class="col-md-7">
         <div class="card">
           <div class="card-header pb-0">
             <div class="row">
@@ -108,7 +108,7 @@
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div class="card">
           <div class="card-header">
             <h4>Atores relevantes</h4>
@@ -123,37 +123,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr v-for="stakeholder in stakeholders" :key="stakeholder.id">
                   <td class="text-md">
-                    Carol Flores <span class="position" :class="bgColorDefine('apoiador')">Apoiador</span>
+                    {{stakeholder.name}}<span class="position" :class="bgColorDefine(stakeholder.role)">{{position(stakeholder.role)}}</span>
                   </td>
-                  <td class="text-center text-md">Desenvolvedora</td>
+                  <td class="text-center text-md">{{stakeholder.position}}</td>
                   <td class="d-flex justify-content-center align-items-center fs-5" style="gap: 1em; margin-top: 2px">
-                    <i class="fa fa-brands fa-instagram icon-social"></i>
-                    <i class="fa fa-brands fa-facebook-square icon-social"></i>
-                    <i class="fa fa-brands fa-twitter-square icon-social"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-md">
-                    Carol Flores <span class="position" :class="bgColorDefine('')">Indefinido</span>
-                  </td>
-                  <td class="text-center text-md">Desenvolvedora</td>
-                  <td class="d-flex justify-content-center align-items-center fs-5" style="gap: 1em; margin-top: 2px">
-                    <i class="fa fa-brands fa-instagram icon-social"></i>
-                    <i class="fa fa-brands fa-facebook-square icon-social"></i>
-                    <i class="fa fa-brands fa-twitter-square icon-social"></i>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-md">
-                    Carol Flores <span class="position" :class="bgColorDefine('opositor')">Opositor</span>
-                  </td>
-                  <td class="text-center text-md">Desenvolvedora</td>
-                  <td class="d-flex justify-content-center align-items-center fs-5" style="gap: 1em; margin-top: 2px">
-                    <i class="fa fa-brands fa-instagram icon-social"></i>
-                    <i class="fa fa-brands fa-facebook-square icon-social"></i>
-                    <i class="fa fa-brands fa-twitter-square icon-social"></i>
+                    <a :href="`https://www.instagram.com/${stakeholder.instagram_handler}`" target="_blank" rel="noopener noreferrer"><i class="fa fa-brands fa-instagram icon-social"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fa fa-brands fa-facebook-square icon-social"></i></a>
+                    <a :href="`https://twitter.com/${stakeholder.twitter_handler}`" target="_blank" rel="noopener noreferrer"><i class="fa fa-brands fa-twitter-square icon-social"></i></a>
                   </td>
                 </tr>
               </tbody>
@@ -182,7 +160,7 @@ export default {
   components: {
   },
   computed:{
-    ...mapState('AgendaStore', ['agendaSelected', 'allNews'])
+    ...mapState('AgendaStore', ['agendaSelected', 'allNews', 'stakeholders'])
   },
   created() {
     this.showTheme();
@@ -195,6 +173,7 @@ export default {
     async showTheme() {
       const id = this.$route.params.id;
       const response = await axios.get(`/api/v1/agendas/${id}`);
+      console.log(response.data);
       this.setAgendaSelected(response.data);
     },
     goToPageNews(link) {
@@ -202,13 +181,25 @@ export default {
     },
     bgColorDefine(position) {
       switch (position) {
-        case 'apoiador':
+        case 'supporter':
           return 'bg-green';
-        case 'opositor':
+        case 'opposition':
           return 'bg-red';
         default:
           return 'bg-orange';
       }
+    },
+    position(stakeholder) {
+      console.log(stakeholder)
+      const positionTranslate = {
+        "supporter": "Apoiador",
+        "opposition": "Opositor",
+        "undecided": "Indefinido",
+      }
+
+      console.log(positionTranslate[stakeholder]);
+
+      return positionTranslate[stakeholder];
     }
 
   },

@@ -27,6 +27,7 @@ const AgendaStore = {
       }
     ],
     keywords: [],
+    stakeholders: [],
   },
 
   mutations:{
@@ -36,6 +37,7 @@ const AgendaStore = {
     setAgendaSelected(state, { result }) {
       state.agendaSelected = result;
       state.keywords = result.keywords;
+      state.stakeholders = result.stakeholders;
     },
     setNewKeyword(state, keyword) {
       state.keywords = [...state.keywords, keyword];
