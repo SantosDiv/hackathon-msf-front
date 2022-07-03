@@ -3,13 +3,12 @@ import Dashboard from "@/views/Dashboard.vue";
 import AgendaShowView from "@/views/Agendas/AgendaShowView.vue";
 import AgendaEdit from "@/views/Agendas/AgendaEdit.vue";
 import Tables from "@/views/Tables.vue";
-import Billing from "@/views/Billing.vue";
-import VirtualReality from "@/views/VirtualReality.vue";
 import Profile from "@/views/Profile.vue";
 import Rtl from "@/views/Rtl.vue";
 import SignIn from "@/views/SignIn.vue";
 import SignUp from "@/views/SignUp.vue";
 import FontsNews from "@/views/FontsNews.vue";
+import NewStakeholder from "@/views/Stakeholders/NewStakeholder.vue"
 
 const routes = [
   {
@@ -38,19 +37,14 @@ const routes = [
     component: Tables,
   },
   {
+    path: "/stakeholder/new",
+    name: "Criar ator",
+    component: NewStakeholder,
+  },
+  {
     path: "/fonts",
-    name: "FontsNews",
+    name: "Fontes de notícias",
     component: FontsNews,
-  },
-  {
-    path: "/billing",
-    name: "Billing",
-    component: Billing,
-  },
-  {
-    path: "/virtual-reality",
-    name: "Virtual Reality",
-    component: VirtualReality,
   },
   {
     path: "/profile",
