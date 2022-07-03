@@ -62,14 +62,14 @@
               </td>
               <td class="column align-middle text-center text-sm">
                 <a
-                  href="https://www.instagram.com/{{stakeholder.instagram_handler}}"
+                  :href="`https://www.instagram.com/${stakeholder.instagram_handler}`"
                 >
-                  <i class="fa fa-brands fa-instagram space fs-2 " ></i>
+                  <i class="fa fa-brands fa-instagram space fs-3 " ></i>
                 </a>
                 <a
-                  href="https://twitter.com/{{stakeholder.twitter_handler}}"
+                  href= "`https://www.twitter.com/${stakeholder.twitter_handler}`"
                 >
-                <i class="fa fa-brands fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-brands fa-twitter fs-4" aria-hidden="true"></i>
                 </a>
               </td>
               <td class="align-middle text-center">
