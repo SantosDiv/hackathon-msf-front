@@ -65,7 +65,7 @@
                 <a
                   href="https://www.instagram.com/{{stakeholder.instagram_handler}}"
                 >
-                  <i class="fa fa-brands fa-instagram space fs-2"></i>
+                  <i class="fa fa-brands fa-instagram space fs-2 " ></i>
                 </a>
                 <a
                   href="https://twitter.com/{{stakeholder.twitter_handler}}"
@@ -85,7 +85,7 @@
                   <i class="fa fa-solid fa-pen-to-square" aria-hidden="true"></i>
                 </a>
                 <a>
-                  <i class="fa fa-solid fa-trash" aria-hidden="true" @click="deleteStakeholder(stakeholder.id)"></i>
+                  <i class="fa fa-solid fa-trash" aria-hidden="true" @click="deleteStakeholder(stakeholder.id)" style="cursor: pointer;"></i>
                 </a>
               </td>
             </tr>
@@ -97,7 +97,8 @@
 </template>
 
 <script>
-import Axios from '../../axios/index'
+import axios from '../../axios/index'
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: "stakeholders-table",
@@ -106,13 +107,20 @@ export default {
       stakeholders: []
     };
   },
+
+  computed:{
+   ...mapState('StakeholdersStore', ['stakeholdersList'])
+  },
+
   methods: {
+    ...mapActions('StakeholdersStore', ['loadStakeholdersList', 'loadStakeholderToEdit', 'deletestakeholder']),
     async setAllStakeholders(){
-      const response = await Axios.get('/stakeholder')
-      this.stakeholders = response.data
+      const response = await axios.get('/api/v1/stakeholders')
+      this.stakeholders = response.data.result
     },
     async deleteStakeholder(id){
-      await Axios.delete(`{/stakeholder/${id}`)
+      await axios.delete(`/api/v1/stakeholders/${id}`)
+      this.setAllStakeholders()
     }
   },
   created() {
