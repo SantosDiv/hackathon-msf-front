@@ -42,7 +42,7 @@
               <th
                 class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
               >
-                Apoiador
+                Posição
               </th>
               <th
                 class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
@@ -74,7 +74,7 @@
               </td>
               <td class="align-middle text-center">
                 <span class="text-secondary text-sm font-weight-bold">
-                  {{stakeholder.role}}
+                  {{position(stakeholder.role)}}
                 </span>
               </td>
               <td class="align-middle text-center">
@@ -120,7 +120,17 @@ export default {
     async deleteStakeholder(id){
       await axios.delete(`/api/v1/stakeholders/${id}`)
       this.setAllStakeholders()
-    }
+      window.alert('Ator deletado com sucesso');
+    },
+    position(stakeholder) {
+      const positionTranslate = {
+        "supporter": "Apoiador",
+        "opposition": "Opositor",
+        "undecided": "Indeciso",
+      }
+
+      return positionTranslate[stakeholder];
+    },
   },
   created() {
     this.setAllStakeholders()

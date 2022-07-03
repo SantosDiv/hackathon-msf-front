@@ -1,3 +1,9 @@
+<style scoped>
+  .logo {
+
+  }
+</style>
+
 <template>
   <aside
     class="my-3 overflow-auto border-0 sidenav navbar navbar-vertical navbar-expand-xs border-radius-xl"
@@ -11,7 +17,7 @@
         id="iconSidenav"
       ></i>
       <a class="m-0 navbar-brand" href="/">
-        <span class="ms-1 font-weight-bold">Gérard - MSF Brasil</span>
+        <span class="ms-1 font-weight-bold"><img style="margin-left: -20px" class="logo" width="200" src="../../../public/logo-msf-.png" alt="Logo da MSFFinder" /></span>
       </a>
     </div>
     <hr class="mt-0 horizontal dark" />

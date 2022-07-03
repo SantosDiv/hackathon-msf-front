@@ -123,8 +123,8 @@ export default {
         role: this.role,
         agenda_id: this.agendaIdSelected
       }
-      const response = await axios.post('/api/v1/stakeholders', params)
-      console.log(response.data);
+      await axios.post('/api/v1/stakeholders', params)
+      this.$router.push('/tables');
 
     }
   }

@@ -72,11 +72,6 @@
                     >
                       Site
                     </th>
-                    <th
-                      class="text-center text-uppercase text-xxs font-weight-bolder opacity-7"
-                    >
-                      Credibilidade
-                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -86,7 +81,7 @@
                         <div>
                         </div>
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">{{news.date}}</h6>
+                          <h6 class="mb-0 text-sm">{{createdAt(news.pubDate)}}</h6>
                         </div>
                       </div>
                     </td>
@@ -94,10 +89,7 @@
                       <span class="text-xs font-weight-bold">{{news.title}}</span>
                     </td>
                     <td class="align-middle text-center text-sm">
-                      <span class="text-xs font-weight-bold">{{news.site}}</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="text-xs font-weight-bold">{{news.credibility}}</span>
+                      <span class="text-xs font-weight-bold">{{site(news.link)}}</span>
                     </td>
                   </tr>
 
@@ -190,16 +182,18 @@ export default {
       }
     },
     position(stakeholder) {
-      console.log(stakeholder)
       const positionTranslate = {
         "supporter": "Apoiador",
         "opposition": "Opositor",
-        "undecided": "Indefinido",
+        "undecided": "Indeciso",
       }
 
-      console.log(positionTranslate[stakeholder]);
-
       return positionTranslate[stakeholder];
+    },
+    site(link) {
+      console.log(link)
+      const url = new URL(link)
+      return url.host;
     }
 
   },
