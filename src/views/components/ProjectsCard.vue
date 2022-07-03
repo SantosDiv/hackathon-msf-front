@@ -1,10 +1,7 @@
 <style scoped>
   .theme {
     cursor: pointer;
-  }
-
-  .rowTheme:hover {
-    background-color: rgb(246, 246, 246);
+    padding-left: 1em!important;
   }
 </style>
 <template>
@@ -12,7 +9,7 @@
     <div class="card-header pb-0">
       <div class="row">
         <div class="col-lg-6 col-7">
-          <h6>Temas</h6>
+          <h4>Temas</h4>
           <p class="text-sm mb-0">
             <!-- <i class="fa fa-check text-info" aria-hidden="true"></i> -->
             <span>Todos os temas cadastrados</span>
@@ -28,33 +25,13 @@
             >
               <i class="fa fa-ellipsis-v text-secondary" aria-hidden="true"></i>
             </a>
-            <ul
-              class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5"
-              aria-labelledby="dropdownTable"
-            >
-              <li>
-                <a class="dropdown-item border-radius-md" href="javascript:;"
-                  >Action</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item border-radius-md" href="javascript:;"
-                  >Another action</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item border-radius-md" href="javascript:;"
-                  >Something else here</a
-                >
-              </li>
-            </ul>
           </div>
         </div>
       </div>
     </div>
     <div class="card-body px-0 pb-2">
-      <div class="table-responsive table-hover">
-        <table class="table align-items-center mb-0">
+      <div class="table-responsive">
+        <table class="table align-items-center mb-0 table-hover">
           <thead>
             <tr>
               <th
@@ -70,8 +47,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="agenda in agendas" :key="agenda.id" class="rowTheme">
-              <td @click="showTheme(agenda.id)" class="theme">
+            <tr v-for="agenda in agendas" :key="agenda.id" class="rowTheme" @click="$router.push(`/agenda/${agenda.id}`)" >
+              <td class="theme">
                 <div class="d-flex px-2 py-1">
                   <div>
                   </div>
@@ -104,7 +81,6 @@ export default {
   data() {
     return {
       img1,
-      // agendas: [],
     };
   },
   components: {
@@ -116,7 +92,7 @@ export default {
     this.getAgendas();
   },
   methods: {
-    ...mapActions('AgendaStore', ['setAgendas']),
+    ...mapActions('AgendaStore', ['setAgendas', 'setAgendaSelected']),
     async getAgendas() {
       const response = await axios.get('/api/v1/agendas');
       const { result } = response.data;
@@ -125,9 +101,10 @@ export default {
     createdAt(date) {
       return moment(date).format('DD/MM/yyyy')
     },
-    showTheme(id) {
-      console.log(id)
-    }
+    async showTheme(id) {
+      const response = await axios.get(`/api/v1/agendas/${id}`);
+      this.setAgendaSelected(response.data);
+    },
 
   },
 
