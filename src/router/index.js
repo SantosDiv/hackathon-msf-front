@@ -9,6 +9,7 @@ import Profile from "@/views/Profile.vue";
 import Rtl from "@/views/Rtl.vue";
 import SignIn from "@/views/SignIn.vue";
 import SignUp from "@/views/SignUp.vue";
+import FontsNews from "@/views/FontsNews.vue";
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     path: "/tables",
     name: "Tables",
     component: Tables,
+  },
+  {
+    path: "/fonts",
+    name: "FontsNews",
+    component: FontsNews,
   },
   {
     path: "/billing",
