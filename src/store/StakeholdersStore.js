@@ -8,9 +8,8 @@ const StakeholdersStore = {
   },
 
   mutations:{
-    // verificar com diogenes se isso funciona
-    setstakeholder(state, payload){
-      state.stakeholder = payload.stakeholder
+    setStakeholder(state, payload){
+      state.stakeholder = payload.result
     },
     setStakeholdersList(state, payload){
       state.StakeholdersList = payload.result
