@@ -5,12 +5,20 @@
   .space {
     margin-right: .50em !important;
   }
+  .create-button{
+    margin-right: 4.50rem !important;
+  }
 </style>
 
 <template>
   <div class="card mb-4">
-    <div class="card-header pb-0">
+    <div class="card-header pb-0 d-flex justify-content-between">
       <h6>Atores</h6>
+      <a
+        href="https://localhost:3000/stakeholder/new"
+      >
+      <button type="button" class="btn btn-primary create-button">Criar Ator</button>
+      </a>
     </div>
     <div class="card-body px-0 pt-0 pb-2">
       <div class="table-responsive p-0">
