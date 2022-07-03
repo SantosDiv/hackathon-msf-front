@@ -43,7 +43,7 @@
               </div>
               <div class="col-lg-3 col-3 my-auto text-end">
                 <div class="dropdown float-lg-end pe-4">
-                  <button class="btn btn-danger">Editar</button>
+                  <button type="button" @click="$router.push(`/agenda-edit/${agendaSelected.id}`)" class="btn btn-danger">Editar</button>
                 </div>
               </div>
             </div>
@@ -173,7 +173,7 @@ import { mapState, mapActions } from 'vuex';
 import moment from 'moment';
 
 export default {
-  name: "projects-card",
+  name: "agenda-show",
   data() {
     return {
       img1,

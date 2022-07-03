@@ -6,17 +6,19 @@
       <p class="text-sm" v-html="description"></p>
     </div>
     <div class="p-3 card-body">
-      <div
-        class="timeline timeline-one-side"
-        :data-timeline-axis-style="darkMode ? 'dashed' : 'dotted'"
-      >
-        <slot />
-      </div>
+      <table class="table table-hover">
+        <tbody>
+          <tr v-for="trendingTopic in trendingTopics" :key="trendingTopic.name" @click="goToTwitter(trendingTopic.url)" style="cursor: pointer;">
+            <td>{{trendingTopic.name}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
 
 <script>
+import axios from '../../axios';
 export default {
   name: "TimelineList",
   props: {
@@ -33,5 +35,23 @@ export default {
       default: false,
     },
   },
+  data() {
+    return {
+      trendingTopics: [],
+    }
+  },
+  created() {
+    this.getTrendingTopics();
+  },
+  methods: {
+    async getTrendingTopics() {
+      const response = await axios.get('api/v1/trending_topics');
+      const { result } = response.data;
+      this.trendingTopics = result.slice(0, 10);
+    },
+    goToTwitter(url) {
+      window.open(url, "_blank");
+    }
+  }
 };
 </script>

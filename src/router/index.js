@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "@/views/Dashboard.vue";
 import AgendaShowView from "@/views/Agendas/AgendaShowView.vue";
+import AgendaEdit from "@/views/Agendas/AgendaEdit.vue";
 import Tables from "@/views/Tables.vue";
 import Billing from "@/views/Billing.vue";
 import VirtualReality from "@/views/VirtualReality.vue";
@@ -24,6 +25,11 @@ const routes = [
     path: "/agenda/:id",
     name: "Detalhes",
     component: AgendaShowView,
+  },
+  {
+    path: "/agenda-edit/:id",
+    name: "Edição de tema",
+    component: AgendaEdit,
   },
   {
     path: "/tables",
