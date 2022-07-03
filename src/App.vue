@@ -19,7 +19,7 @@
       v-if="showNavbar"
     />
     <router-view />
-    <app-footer v-show="showFooter" />
+    <!-- <app-footer v-show="showFooter" /> -->
     <configurator
       :toggle="toggleConfigurator"
       :class="[
@@ -33,7 +33,6 @@
 import Sidenav from "./examples/Sidenav";
 import Configurator from "@/examples/Configurator.vue";
 import Navbar from "@/examples/Navbars/Navbar.vue";
-import AppFooter from "@/examples/Footer.vue";
 import { mapMutations, mapState } from "vuex";
 export default {
   name: "App",
@@ -41,7 +40,6 @@ export default {
     Sidenav,
     Configurator,
     Navbar,
-    AppFooter,
   },
   methods: {
     ...mapMutations("TemplateStore", ["toggleConfigurator", "navbarMinimize"]),
