@@ -65,10 +65,6 @@ export default {
   },
   computed:{
     ...mapState("stakeholdersStore", ["stakeholder"]),
-
-    supporter() { return 'supporter' },
-    opposition() { return 'opposition' },
-    undecided() { return 'undecided' },
   },
 };
 </script>
