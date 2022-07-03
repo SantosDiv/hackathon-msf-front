@@ -156,6 +156,7 @@ export default {
   },
   created() {
     this.showTheme();
+    this.getNews();
   },
   methods: {
     ...mapActions('AgendaStore', ['setAgendaSelected', 'setAllNews']),
@@ -165,11 +166,11 @@ export default {
     async showTheme() {
       const id = this.$route.params.id;
       const response = await axios.get(`/api/v1/agendas/${id}`);
-      console.log(response.data);
       this.setAgendaSelected(response.data);
     },
     async getNews() {
-      const response = await axios.get(`/api/news`);
+      const id = this.$route.params.id;
+      const response = await axios.get(`/api/v1/news/${id}`);
       console.log(response.data);
       this.setAgendaSelected(response.data);
     },
@@ -196,7 +197,6 @@ export default {
       return positionTranslate[stakeholder];
     },
     site(link) {
-      console.log(link)
       const url = new URL(link)
       return url.host;
     }
