@@ -158,13 +158,18 @@ export default {
     this.showTheme();
   },
   methods: {
-    ...mapActions('AgendaStore', ['setAgendaSelected']),
+    ...mapActions('AgendaStore', ['setAgendaSelected', 'setAllNews']),
     createdAt(date) {
       return moment(date).format('DD/MM/yyyy')
     },
     async showTheme() {
       const id = this.$route.params.id;
       const response = await axios.get(`/api/v1/agendas/${id}`);
+      console.log(response.data);
+      this.setAgendaSelected(response.data);
+    },
+    async getNews() {
+      const response = await axios.get(`/api/news`);
       console.log(response.data);
       this.setAgendaSelected(response.data);
     },
