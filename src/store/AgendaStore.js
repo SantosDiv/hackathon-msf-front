@@ -25,19 +25,26 @@ const AgendaStore = {
         link: 'http://www.google.com.br',
         credibility: 'Baixa'
       }
-    ]
+    ],
+    keywords: [],
   },
 
   mutations:{
     setAgendas(state, payload){
       state.agendas = payload;
     },
-    setAgendaSelected(state, payload) {
-      state.agendaSelected = payload.result;
+    setAgendaSelected(state, { result }) {
+      state.agendaSelected = result;
+      state.keywords = result.keywords;
+    },
+    setNewKeyword(state, keyword) {
+      state.keywords = [...state.keywords, keyword];
+    },
+    removeKeyword(state, keywrodId) {
+      const keywords = state.keywords;
+      keywords.splice(keywrodId, 1);
+      state.keywords = keywords;
     }
-    // deleteAuthor(state, deletingAuthorsId){
-    //   state.AuthorsList = state.AuthorsList.filter((author) => author.id != deletingAuthorsId)
-    // },
   },
 
   actions:{
@@ -46,6 +53,13 @@ const AgendaStore = {
     },
     setAgendaSelected({commit}, agendaSelected) {
       commit('setAgendaSelected', agendaSelected);
+    },
+    setNewKeyword({ commit }, newKeyword) {
+      commit('setNewKeyword', newKeyword);
+    },
+    removeKeyword({state, commit}, keyword) {
+      const keywrodId = state.keywords.indexOf(keyword);
+      commit('removeKeyword', keywrodId);
     }
     // deletePrinter({commit}, deletingAuthorsId){
     //   return deleteStakeholder(deletingAuthorsId)
@@ -54,13 +68,6 @@ const AgendaStore = {
   },
 
   methods: {
-    // async setAllStakeholders(){
-    //   const response = await Axios.get('/stakeholder')
-    //   return response.data
-    // },
-    // async deleteStakeholder(id){
-    //   return await Axios.delete(`{/stakeholder/${id}`)
-    // }
   },
 }
 
