@@ -29,15 +29,23 @@
                   @input="({target}) => _updateTitle(target.value)"
                 >
               </div>
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-4 position-relative">
                 <label for="keywords">Adicionar palavras chaves</label>
-                                <input
-                  type="text"
-                  class="form-control"
-                  id="keyword"
-                  placeholder="digite uma nova palavra chave"
-                  @input="({target}) => _updateTitle(target.value)"
-                >
+                <div class="row">
+                  <div class="col-sm-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="keyword"
+                      placeholder="digite uma nova palavra chave"
+                      :value="keyword"
+                      @input="({target}) => _updateKeyword(target.value)"
+                    >
+                  </div>
+                  <div class="col-sm-3">
+                    <button type="button" class="btn btn-primary" @click="setKeywordInStore"><i class="fa fa-solid fa-plus"></i></button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -54,7 +62,7 @@
                       </td>
                       <td class="d-flex" style="gap: 1em;">
                         <i class="fa fa-solid fa-pen" style="cursor: pointer;" @click="enableInputKeyword"></i>
-                        <i class="fa fa-solid fa-trash" style="cursor: pointer;"></i>
+                        <i class="fa fa-solid fa-trash" style="cursor: pointer;" @click="deletKeyword(keyword)"></i>
                       </td>
                     </tr>
                   </tbody>
@@ -74,32 +82,30 @@ import setTooltip from "@/assets/js/tooltip.js";
 import axios from '../../axios';
 import { mapState, mapActions } from 'vuex';
 import moment from 'moment';
-import "vue-select/dist/vue-select.css";
 
 export default {
   name: "agenda-edit",
   data() {
     return {
       title: '',
-      keywords: [],
-      disabled: true
+      disabled: true,
+      keyword: ''
     };
   },
   components: {
     // vSelect
   },
   computed:{
-    ...mapState('AgendaStore', ['agendaSelected']),
+    ...mapState('AgendaStore', ['agendaSelected', 'keywords']),
     setTitle() {
       return this.agendaSelected.title;
     },
   },
   created() {
     this.showTheme();
-    this.setKeyword();
   },
   methods: {
-    ...mapActions('AgendaStore', ['setAgendaSelected']),
+    ...mapActions('AgendaStore', ['setAgendaSelected', 'setNewKeyword', 'removeKeyword']),
     createdAt(date) {
       return moment(date).format('DD/MM/yyyy')
     },
@@ -111,14 +117,31 @@ export default {
     _updateTitle(newTitle) {
       this.title = newTitle;
     },
-    _setKeyword(keywords) {
-      this.keywords = keywords
+    _updateKeyword(keyword) {
+      this.keyword = keyword;
     },
     enableInputKeyword() {
       this.disabled = !this.disabled;
     },
-    setKeyword() {
-      this.keywords = this.agendaSelected.keywords
+    setKeywordInStore() {
+      this.setNewKeyword(this.keyword)
+    },
+    deletKeyword(keyword) {
+      this.removeKeyword(keyword);
+    },
+    async editAgenda() {
+      const array = JSON.parse(JSON.stringify(this.keywords));
+      const params = {
+        title: this.title || this.agendaSelected.title,
+        keywords: array,
+      }
+      try {
+        await axios.put(`/api/v1/agendas/${this.agendaSelected.id}`, params);
+        this.$router.push(`/agenda/${this.agendaSelected.id}`);
+      } catch (error) {
+        console.log(error);
+      }
+
     }
 
   },
