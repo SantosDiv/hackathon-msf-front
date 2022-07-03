@@ -92,7 +92,7 @@
 import Axios from '../../axios/index'
 
 export default {
-  name: "authors-table",
+  name: "stakeholders-table",
   data() {
     return {
       stakeholders: []

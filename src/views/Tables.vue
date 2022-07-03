@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import AuthorsTable from "./components/AuthorsTable";
+import StakeholdersTable from "./components/StakeholdersTable.vue";
 
 export default {
   name: "tables",
   components: {
-    AuthorsTable,
+    StakeholdersTable,
   },
 };
 </script>
